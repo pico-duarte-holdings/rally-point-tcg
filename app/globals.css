@@ -34,3 +34,10 @@
     @apply shadow-brand-gold-lg transform scale-105;
   }
 }
+
+:focus-visible { outline: 3px solid #D4A520; outline-offset: 4px; }
+.skip-link { position: fixed; left: 1rem; top: -6rem; z-index: 100; padding: 1rem; background: #D4A520; color: #111; }
+.skip-link:focus { top: 1rem; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

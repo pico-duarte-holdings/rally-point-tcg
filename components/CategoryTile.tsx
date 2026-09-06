@@ -14,8 +14,8 @@ export default function CategoryTile({ category }: CategoryTileProps) {
           {category.name}
         </h3>
         <p className="text-text-secondary text-sm mb-4">{category.description}</p>
-        <p className="text-brand-red text-sm font-semibold">
-          {category.cardCount} cards in stock
+        <p className="text-text-secondary text-sm font-semibold">
+          {category.cardCount > 0 ? `${category.cardCount} listings` : 'Listings coming soon'}
         </p>
       </div>
     </Link>

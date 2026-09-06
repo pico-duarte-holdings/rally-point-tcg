@@ -1,163 +1,46 @@
-# Rally Point TCG - E-Commerce Platform
+# Rally Point TCG
 
-A modern, dark-themed trading card game e-commerce web app built with Next.js 15, React 19, and Tailwind CSS v4.
+Veteran-owned card storefront built with Next.js, React, and Tailwind CSS.
 
-## Features
+## Current status
 
-- **Dark Neon/RGB Gamer Design** - Electric cyan, neon purple, and hot pink accents on dark backgrounds
-- **Product Catalog** - 29+ trading cards across 7 categories (Pokémon, One Piece, Naruto, Lorcana, Baseball, Football, Basketball)
-- **Advanced Filtering** - Filter by game, condition, price range, and sort options
-- **Search Functionality** - Real-time search across card names, sets, and games
-- **Shopping Cart** - Persistent cart using localStorage with quantity controls
-- **Product Details** - Detailed card pages with related products
-- **Category Pages** - Dynamic category browsing with filtered inventory
-- **Responsive Design** - Mobile-first approach with full mobile menu support
-- **Veteran-Owned Brand** - Mission-driven messaging throughout
+The public site is an inventory-coming-soon storefront. There are no verified
+catalog records, checkout, customer accounts, database, or marketplace integrations.
+The original generated products and browser-only cart were removed because they
+represented sample cards as real stock. Existing product URLs now return 404.
 
-## Tech Stack
+## Development
 
-- **Framework**: Next.js 15+ with App Router
-- **UI Library**: React 19
-- **Styling**: Tailwind CSS v4 with custom neon color palette
-- **Icons**: Lucide React
-- **State Management**: React Context (Cart)
-- **TypeScript**: Full type safety throughout
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18+
-- npm or yarn
-
-### Installation
-
-```bash
-# Clone the repository
-cd rally-point-tcg
-
-# Install dependencies
-npm install
-
-# Run development server
+```sh
+npm ci
 npm run dev
-```
-
-Visit `http://localhost:3000` in your browser.
-
-### Build for Production
-
-```bash
+npm run lint
+npm run typecheck
 npm run build
-npm start
 ```
 
-## Project Structure
+GitHub production deployments are connected to Vercel. Validate changes before
+pushing to main. No secrets belong in Git or public catalog data.
 
-```
-rally-point-tcg/
-├── app/
-│   ├── layout.tsx           # Root layout with Navbar & Footer
-│   ├── globals.css          # Global styles & Tailwind imports
-│   ├── page.tsx             # Homepage
-│   ├── shop/
-│   │   ├── page.tsx         # Shop with filters
-│   │   └── [id]/page.tsx    # Product detail page
-│   ├── categories/
-│   │   └── [slug]/page.tsx  # Category pages
-│   ├── cart/page.tsx        # Shopping cart
-│   └── about/page.tsx       # About/mission page
-├── components/
-│   ├── Navbar.tsx           # Navigation bar
-│   ├── Footer.tsx           # Footer
-│   ├── CardProduct.tsx      # Product card component
-│   ├── CategoryTile.tsx     # Category card
-│   ├── SearchBar.tsx        # Search input
-│   ├── FilterSidebar.tsx    # Filter controls
-│   ├── CartItem.tsx         # Cart line item
-│   └── HeroSection.tsx      # Homepage hero
-├── lib/
-│   ├── types.ts             # TypeScript types
-│   ├── data.ts              # Sample card inventory
-│   └── cart-context.tsx     # Cart state management
-├── tailwind.config.ts       # Tailwind configuration
-├── postcss.config.mjs       # PostCSS config
-├── tsconfig.json            # TypeScript config
-└── .env.example             # Environment variables template
-```
+## Inventory and sales: next implementation
 
-## Features in Detail
+Use a private database for card variants, physical lots/SKUs, locations,
+acquisition and grading costs, channel listing IDs, orders, fees, shipping,
+refunds, and an append-only inventory movement history. The storefront receives
+only a public projection: photos, identity, condition, selling price, availability.
+Never expose costs, customer records, or integration credentials to the browser.
 
-### Shopping Experience
-- Browse products across 7 gaming categories
-- Filter by price range, condition, and game type
-- Sort by price, newest, name, or featured status
-- View detailed product information with card specs
-- Add items to cart with quantity control
-- Persistent cart with local storage
+Scans and TCGplayer exports need a reviewed import with duplicate detection and
+batch IDs. A TCGplayer CSV is not an automatic marketplace connection. Confirm
+available TCGplayer partner access before selecting a synchronization service.
 
-### Design
-- Dark background (#0a0a0f) with neon cyan (#00f0ff) primary accent
-- Secondary neon purple (#b347ff) for badges and secondary actions
-- Hot pink (#ff2d7b) for sale prices and highlights
-- Smooth transitions and hover animations
-- Neon glow effects on interactive elements
-- Mobile-responsive layout
+Each sale must be deduplicated by channel + order + line item. Reserve stock,
+update connected channels, reconcile missed events, and record sync failures.
+Returns must be inspected before restocking. Test simultaneous sales and replayed
+notifications. Allocate stock per channel until shared-stock sync is verified.
 
-### Brand
-- Veteran-owned narrative throughout
-- Military terminology (rally point, mission, service)
-- Community-focused messaging
-- Trust and integrity positioning
+The website must not accept payment until server-side availability, checkout,
+shipping/tax configuration, fulfillment, and owner-approved policies are ready.
 
-## Next Steps / Future Enhancements
-
-- [ ] Firebase integration for backend
-- [ ] Stripe payment processing
-- [ ] User authentication and accounts
-- [ ] Order history and tracking
-- [ ] Wishlist functionality
-- [ ] Product reviews and ratings
-- [ ] Admin dashboard for inventory management
-- [ ] Email notifications
-- [ ] Inventory synchronization
-- [ ] Advanced analytics
-
-## Environment Variables
-
-Create a `.env.local` file in the root directory with the following variables (see `.env.example`):
-
-```
-NEXT_PUBLIC_FIREBASE_API_KEY=
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
-NEXT_PUBLIC_FIREBASE_APP_ID=
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
-STRIPE_SECRET_KEY=
-```
-
-## Sample Data
-
-The app comes with 29 curated trading cards across all categories:
-
-- **Pokémon**: Charizard VMAX, Pikachu VSTAR, Mewtwo ex, Lugia V, Umbreon VMAX
-- **One Piece**: Luffy, Zoro, Nami, Shanks, Boa Hancock
-- **Naruto**: Naruto, Sasuke, Kakashi, Itachi
-- **Lorcana**: Elsa, Mickey Mouse, Stitch
-- **Baseball**: Mike Trout, Shohei Ohtani, Ronald Acuña Jr., Babe Ruth
-- **Football**: Patrick Mahomes, CJ Stroud, Tyreek Hill, Saquon Barkley
-- **Basketball**: LeBron James, Victor Wembanyama, Luka Dončić, Stephen Curry
-
-Prices range from $59.99 to $449.99 with realistic conditions and rarity levels.
-
-## License
-
-MIT License - Feel free to use this as a template for your own e-commerce projects.
-
-## Support
-
-For questions or issues, feel free to reach out. Rally Point TCG is built with pride and passion.
-
-**Veteran Owned. Mission Ready. Game On.**
+Existing legal documents are retained with a preview-status notice; their future
+purchase, shipping, and return terms need owner review before opening checkout.

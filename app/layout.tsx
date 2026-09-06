@@ -3,14 +3,15 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { CartProvider } from '@/lib/cart-context';
+
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://rallypointtcg.com'),
   title: 'Rally Point TCG - Veteran Owned Trading Card Store',
-  description: 'Buy rare and vintage trading cards from all your favorite games. Pokemon, One Piece, Naruto, and more.',
-  keywords: 'trading cards, TCG, Pokemon, One Piece, Naruto, collectibles',
+  description: 'Veteran-owned trading card business. Our Pokémon, One Piece, Lorcana, and baseball collection is being prepared for online listings.',
+  keywords: 'trading cards, TCG, Pokemon, One Piece, Lorcana, baseball, collectibles',
   authors: [{ name: 'Rally Point TCG' }],
   icons: {
     icon: '/favicon.ico',
@@ -31,13 +32,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body>
-        <CartProvider>
+        <a href="#main-content" className="skip-link">Skip to content</a>
+
           <div className="flex flex-col min-h-screen bg-dark-bg">
             <Navbar />
-            <main className="flex-1">{children}</main>
+            <main id="main-content" className="flex-1">{children}</main>
             <Footer />
           </div>
-        </CartProvider>
+
       </body>
     </html>
   );

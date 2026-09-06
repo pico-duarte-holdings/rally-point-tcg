@@ -1,3 +1,5 @@
+HISTORICAL DESIGN NOTES — September 6, 2026: These notes describe the original demo, not current functionality. See README.md for verified status.
+
 # Rally Point TCG - Quick Start Guide
 
 ## Installation & Running
