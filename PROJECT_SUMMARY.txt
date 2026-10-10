@@ -230,14 +230,14 @@ READY FOR PRODUCTION
 ✓ Environment variables ready (.env.example)
 ✓ Ready for Firebase integration
 ✓ Ready for Stripe integration
-✓ Ready for deployment (Vercel, Netlify, etc)
+✓ Ready for deployment with Firebase App Hosting
 
 NEXT STEPS:
 1. Customize brand name and colors
 2. Add your own product photos/descriptions
 3. Set up Firebase (optional, for backend)
 4. Integrate Stripe (optional, for payments)
-5. Deploy to Vercel or your hosting
+5. Deploy with Firebase App Hosting
 
 ================================================================================
 END OF SUMMARY

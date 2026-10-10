@@ -19,8 +19,8 @@ npm run typecheck
 npm run build
 ```
 
-GitHub production deployments are connected to Vercel. Validate changes before
-pushing to main. No secrets belong in Git or public catalog data.
+GitHub production deployments are connected to Firebase App Hosting. Validate
+changes before pushing to main. No secrets belong in Git or public catalog data.
 
 ## Inventory and sales: next implementation
 

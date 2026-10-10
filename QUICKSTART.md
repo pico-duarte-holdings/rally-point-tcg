@@ -110,7 +110,7 @@ rally-point-tcg/
 ### To Deploy
 ```bash
 npm run build
-# Deploy to Vercel, Netlify, or your hosting
+# Deploy with Firebase App Hosting
 ```
 
 ## Troubleshooting
