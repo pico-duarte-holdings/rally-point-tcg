@@ -14,9 +14,10 @@ export const metadata: Metadata = {
   keywords: 'trading cards, TCG, Pokemon, One Piece, Lorcana, baseball, collectibles',
   authors: [{ name: 'Rally Point TCG' }],
   icons: {
-    icon: '/favicon.ico',
+    icon: '/favicon-32.png',
     apple: '/apple-touch-icon.png',
   },
+  manifest: '/site.webmanifest',
   openGraph: {
     title: 'Rally Point TCG',
     description: 'Veteran Owned. Mission Ready. Game On.',
